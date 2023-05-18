@@ -1,0 +1,36 @@
+body{
+    min-height: 100vh;
+    background-color: rgb(249, 250, 251);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+form{
+    border: 1px solid black;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    border-radius: 10px;
+}
+
+.field{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.btn{
+    color: black;
+    background-color: rgb(20, 237, 20);
+    margin-top: 10px;
+}
+
+input{
+    padding: 5px;
+}
