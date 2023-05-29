@@ -36,7 +36,7 @@ def mpesa_checkout(request):
                 instance.ip = request.META.get("REMOTE_ADDR")
                 instance.save()
 
-            return JsonResponse(json_response, safe=False) 
+            return JsonResponse(json_response, safe=False)
 
     return render(request, "payments/mpesa.html", {"form": form})
 

@@ -1,4 +1,5 @@
 import base64
+from abc import ABC, abstractmethod
 from datetime import datetime
 
 import requests
@@ -8,7 +9,16 @@ from requests import Response
 from .utils import get_access_token
 
 
-class MpesaGateway:
+class PaymentGateway(ABC):
+    """All payment gateway blueprint"""
+
+    @abstractmethod
+    def stk_push(self, phone_number: str, amount: str):
+        """Stk push"""
+        pass
+
+
+class MpesaGateway(PaymentGateway):
     """Mpesa gateway"""
 
     def __init__(self) -> None:
@@ -35,14 +45,13 @@ class MpesaGateway:
         headers = {
 			'Authorization': 'Bearer ' + get_access_token()
 		}
-        
-        response = requests.post(settings.STK_PUSH_URL, json=payload, headers=headers, timeout=30)    
+
+        response = requests.post(settings.STK_PUSH_URL, json=payload, headers=headers, timeout=30)
         return response
-        
+
     def generate_password(self) -> str:
         """Generates mpesa api password using the provided shortcode and passkey"""
         self.timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         password_str = settings.BUSINESS_SHORTCODE + settings.PASS_KEY + self.timestamp
         password_bytes = password_str.encode("ascii")
         return base64.b64encode(password_bytes).decode("utf-8")
-    

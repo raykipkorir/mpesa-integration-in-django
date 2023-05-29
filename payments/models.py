@@ -16,11 +16,12 @@ class Transaction(models.Model):
     """This model records all the mpesa payment transactions"""
 
     class Status(models.TextChoices):
+        """Payment status"""
         PENDING = "PENDING"
         FAILED = "FAILED"
         SUCCESS = "SUCCESS"
 
-    transaction_no = models.CharField(default=uuid.uuid4, max_length=50, unique=True)
+    transaction_no = models.UUIDField(default=uuid.uuid4, max_length=50, unique=True)
     phone_number = PhoneNumberField(null=False, blank=False)
     checkout_request_id = models.CharField(max_length=200)
     # account_reference = models.CharField(max_length=40, blank=True)

@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-p4=f!(x@7_jop=p2ng4o2=k&e_4z0hg+ymhu(r(fyi=m35r@r2"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -138,7 +138,7 @@ CALLBACK_URL = config("CALLBACK_URL")
 
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://cea8-102-215-76-91.ngrok-free.app/"
+    "https://7abe-102-215-76-91.ngrok-free.app"
 ]
 
 
@@ -148,7 +148,7 @@ LOGGING = {
     "loggers": {
         "": {
             "level": "DEBUG",
-            "handlers": ["file", "mail_admins"],
+            "handlers": ["file"],
         },
     },
     "handlers": {
