@@ -1,5 +1,7 @@
 """Payments views"""
 
+import logging
+
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -10,6 +12,8 @@ from payments.mpesa.utils import callback_handler, format_phone_number
 from .forms import MpesaCheckoutForm
 from .models import Transaction
 
+
+logger = logging.getLogger(__name__)
 
 def mpesa_checkout(request):
     """Initiate stk push prompt"""
